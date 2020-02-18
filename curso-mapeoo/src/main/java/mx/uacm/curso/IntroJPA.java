@@ -24,6 +24,8 @@ public class IntroJPA {
                 
                 //BUSCAMOS POR ID
                 Articulo a = em.find(Articulo.class,1);
+                //El metodo FIND REGRESA ENTIDADES EN ESTADO ADMINSITRADO
+                a.setTitulo("Se cambio el 1 actualizado");
                 System.out.println("titulo:" + a.getTitulo());
                 
                 Usuario user = em.find(Usuario.class,1);
@@ -46,6 +48,21 @@ public class IntroJPA {
                 //aNuevo.setId(3);
                 aNuevo.setPassword("password");
                 em.merge(aNuevo);
+                
+                /*
+                    - Ademas de agregar articulos tambien podemos actualizar
+                        en la base de datos en la entidad, creando una nueva 
+                        instancia 
+                */
+                Articulo articuloActualizado = new Articulo();
+                articuloActualizado.setId(2);
+                articuloActualizado.setContenido("Contenido actualizado");
+                articuloActualizado.setFechaCreacion(new Date());
+                articuloActualizado.setTitulo("Titulo actualizado");
+                //Usamos mage para actualiza
+                em.merge(articuloActualizado);
+                
+                
                 em.getTransaction().commit();
     }
 }

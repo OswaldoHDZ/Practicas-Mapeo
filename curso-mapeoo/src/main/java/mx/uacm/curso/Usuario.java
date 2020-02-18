@@ -23,6 +23,8 @@ public class Usuario {
     @GeneratedValue(strategy=GenerationType.SEQUENCE
             ,generator="SEC_JAVA_USUARIO")
     private Integer id;
+    @Column(name="nombre")
+    private String nombre;
     @Column(name="password")
     private String password;
     @Column(name="email")
@@ -30,6 +32,15 @@ public class Usuario {
     @Column(name="activo")
     private String activo;
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     public Integer getId() {
         return id;
     }
