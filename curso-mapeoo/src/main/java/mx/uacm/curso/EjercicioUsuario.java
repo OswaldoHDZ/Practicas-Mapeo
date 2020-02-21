@@ -19,11 +19,13 @@ public class EjercicioUsuario {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("blog-pruebas");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
+        
         Usuario user = em.find(Usuario.class,2);
         System.out.println("usuario tiene nombre: " + user.getNombre());
 
         user.setNombre("Homero Simpson");
         System.out.println("usuario tiene nombre: "+ user.getNombre());
+        
         em.getTransaction().commit();
     }
 }
